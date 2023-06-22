@@ -1,0 +1,19 @@
+version: '3'
+
+output: prefixed
+
+tasks:
+  run:
+    cmds:
+      - go run ./cmd/keychain-parser
+
+  build:
+    cmds:
+      - mkdir -p ./bin
+      - go build --ldflags "-extldflags" -o ./bin/keychain-parser ./cmd/keychain-parser
+    env:
+      CGO_ENABLED: '0'
+
+  test:
+    cmds:
+      - go test -v ./...
