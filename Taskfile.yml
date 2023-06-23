@@ -2,6 +2,9 @@ version: '3'
 
 output: prefixed
 
+includes:
+  release: Taskfile.release.yml
+
 tasks:
   run:
     cmds:
