@@ -13,9 +13,10 @@ tasks:
   build:
     cmds:
       - mkdir -p ./bin
-      - go build --ldflags "-extldflags" -o ./bin/keychain-parser ./cmd/keychain-parser
+      - go build --ldflags "-extldflags -static -X 'main.Version=${VERSION}'" -o ./bin/keychain-parser ./cmd/keychain-parser
     env:
       CGO_ENABLED: '0'
+      VERSION: ${VERSION:-main}
 
   test:
     cmds:
